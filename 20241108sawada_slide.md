@@ -524,7 +524,31 @@ hard vs soft 損失関数の比較
 ---
 <!-- header: 19.3.2.2 Input-output mutual information -->
 
+**エントロピー最小化の別の解釈**: 入出力間の相互情報量の最大化
+
+相互情報量 $\mathcal{I}(y;\boldsymbol{x})=\int p(\boldsymbol{x})d\boldsymbol{x}\int p(y|\boldsymbol{x})\mathrm{log}\frac{p(y|\boldsymbol{x})}{\int p(\boldsymbol{x})p(y|\boldsymbol{x})d\boldsymbol{x}}dy$
+
+- $\int p(\boldsymbol{x})d\boldsymbol{x}$: 期待値
+- $\int p(y|\boldsymbol{x})\mathrm{log}\frac{p(y|\boldsymbol{x})}{\int p(\boldsymbol{x})p(y|\boldsymbol{x})d\boldsymbol{x}}dy$: すべてのクラスについて合計
+
+→ $\mathcal{I}(y;\boldsymbol{x}) = \mathbb{E}_{\boldsymbol{x}} [\sum_{i=1}^L p(y_i|\boldsymbol{x}) \mathrm{log}\frac{p(y_i|\boldsymbol{x})}{\mathbb{E}_{\boldsymbol{x}}[p(y|\boldsymbol{x})]}]$
+$$
+=\mathbb{E}_{\boldsymbol{x}}[\sum_{i=1}^L p(y_i|\boldsymbol{x})\mathrm{log}p(y_i|\boldsymbol{x})]-\sum_{i=1}^L\mathbb{E}_{\boldsymbol{x}}[p(y_i|\boldsymbol{x})\mathrm{log}\mathbb{E}_{\boldsymbol{x}}[p(y_i|\boldsymbol{x})]]
+$$
 
 ---
+**目的関数へ**
 
-$\boldsymbol{x}$
+情報量の最大化 = 負の情報量の最小化
+
+$-\mathcal{I}(y;\boldsymbol{x})$
+$$
+=-\mathbb{E}_{\boldsymbol{x}}[\sum_{i=1}^L p(y_i|\boldsymbol{x})\mathrm{log}p(y_i|\boldsymbol{x})]+\sum_{i=1}^L\mathbb{E}_{\boldsymbol{x}}[p(y_i|\boldsymbol{x})\mathrm{log}\mathbb{E}_{\boldsymbol{x}}[p(y_i|\boldsymbol{x})]]
+$$
+
+- 第一項: 期待値におけるエントロピー最小化
+- 第二項: 予測されたクラスにおけるエントロピー最大化
+    - モデルがクラスを当確率で予測するように促す ← 使い所に注意
+---
+
+<!-- header: 19.3.3 Co-training -->
