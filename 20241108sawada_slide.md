@@ -302,4 +302,47 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 ---
 
+学習後のzero-shot分類 (Figure19.7 (b))
+- データセット中のK個のクラスラベルを実際のテキスト $y_k$ に変換
+- 正規化埋め込み $I \propto f_I(x)$, $T_k \propto f_T(y_k)$を計算
+- softmaxにより確率を計算
+    - $p(y=k|x) = \mathrm{softmax}([\mathbf{I}^T\mathbf{T}_1,...,\mathbf{I}^T\mathbf{T}_k])_k$
 
+<!-- キーワード：sa, sb, fw. flex_cssの呼び出しが必要 -->
+<!-- https://briboo-pc.hatenablog.jp/entry/2023/11/05/%E3%80%90Marp%E3%80%91%E3%82%B3%E3%83%94%E3%83%9A%E3%81%A7%E7%B0%A1%E5%8D%98%EF%BC%81%E5%A4%9A%E6%AE%B5%E7%B5%84%E3%81%BF%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%83%AC%E3%82%A4%E3%82%A2%E3%82%A6 -->
+<div class="flex fw">
+ <div style='--fw: ;'>
+
+<figure>
+    <center>
+        <img src="figs/19.2.4.5_fig19.7b1.png" width=450>
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+ </div>
+ <div style='--fw: ;'>
+
+<figure>
+    <center>
+        <img src="figs/19.2.4.5_fig19.7b2.png" width=600>
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+ </div>
+</div>
+
+---
+
+長所
+- 教師あり手法（ImageNetデータセットの分類など）と同等の性能
+    - 汎化性能と分布の変化への頑健性 → 詳細: [元論文](https://arxiv.org/pdf/2103.00020)
+
+短所
+- ラベルからテキストの変換形式に敏感 → **prompt engineering** が必要
+    - 例: 食品分類の場合は "a photo of guacamole, a type of food"などの
+    形式が必要
+    - 曖昧性排除のためのテキスト"a type of food" などを人手で付与
+
+---
