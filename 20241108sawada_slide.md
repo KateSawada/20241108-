@@ -346,3 +346,53 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
     - 曖昧性排除のためのテキスト"a type of food" などを人手で付与
 
 ---
+
+<!-- header: 19.2.5 Domain adaptation -->
+
+問題設定: 2つのドメインの入力に対して，共通のラベルを出力
+<figure>
+    <center>
+        <img src="figs/19.2.5_setting.drawio.png" width="">
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+- 転移学習における「双対性」
+- 例: CG画像と現実の画像，商品レビューと映画レビュー
+
+---
+
+目標: ソースドメインで学習・ターゲットドメインでfine-tuning
+→ (Unsupervised) **domain adaptation** ((教師なし)ドメイン適合)
+
+手法
+- 入力がソースかターゲットか区別できない状況下でソース分類器を学習
+    - **domain adversarial learning** (ドメイン敵対的学習)
+    - **gradient sign reverse trick** によって実装可能
+        - 損失関数の符号によって目的関数の最大化/最小化を切り替え
+    - GANと関連アリ
+
+
+---
+
+目的関数
+$\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$
+&emsp; $\frac{1}{N_s+N_t} \sum_{n \in \mathcal{D}_s, \mathcal{D}_t}\ell(d_n, f_\theta(\boldsymbol{x}_n))+\frac{1}{N} \sum_{m \in \mathcal{D}_s}\ell(y_m, g_\phi(f_\theta(\boldsymbol{x}_m)))$
+
+- $N_s=|\mathcal{D}_s|, N_t=|\mathcal{D}_t|, d_n \in \{s, t\}, f: \chi_s \cup \chi_t \mapsto \mathcal{H}, g: \mathcal{H} \mapsto \mathcal{Y}_t$
+- source domainのラベル$y$の分類をするタスクの損失を最小化
+- domain $d$ の分類をする補助タスクの損失を最大化
+- $\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$ の切り替えのために符号の反転
+    - gradient sign reverse trick
+
+---
+
+<!-- header: 19.3 Semi-supervised learning -->
+
+多くの機械学習の成功例は教師ありの設定
+&emsp; ← 大規模なラベル付きデータセットが必要
+
+
+---
+
+$\boldsymbol{x}$
