@@ -488,5 +488,43 @@ hard vs soft 損失関数の比較
 
 ---
 
+<!-- header: 19.3.2.1 The cluster assumption -->
+半教師あり学習の仮定:
+「クラス間決定境界はデータ多様体の低密度な箇所にあるべき」
+&emsp; → 異なるクラスのデータを分離する仮定は無い
+
+<figure>
+    <center>
+        <img src="figs/19.3/19.3. 3_manifold.drawio.png" width=500>
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+半教師あり学習における**クラスタ仮定**（エントロピー最小化もこれ）
+- ラベルなしデータを使ってデータ多様体の形状を推定
+- 決定境界をデータ点から遠ざけると解釈可能
+
+---
+
+エントロピー最小化がクラスタ仮定に基づく背景
+
+(a): 決定境界が高密度領域を通過 & 高エントロピー
+&emsp; ←単純なモデル or 正則化されたモデル
+(b) 低密度領域を通過 & ほとんどのデータで低エントロピー
+
+<figure>
+    <center>
+        <img src="figs/19.3/figure19.10.png" width=900>
+        <figcaption>Figure 19.10. 色の濃さが分類確率を示す．グラフは，ある点の分類確率</figcaption>
+    </center>
+</figure>
+
+
+
+---
+<!-- header: 19.3.2.2 Input-output mutual information -->
+
+
+---
 
 $\boldsymbol{x}$
