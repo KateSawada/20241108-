@@ -447,7 +447,46 @@ $\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$
 ---
 <!-- header: 19.3.2 Entropy minimization -->
 
+背景: 自己学習ではモデル出力のエントロピーが低くなる
+&emsp;→ つまり出力の信頼度が高くなる
+ラベル無しデータに対してクロスエントロピーを適用した
+オンライン学習で明白
+
+→オンライン自己学習の損失を$p(y=c^{*}|x) = 1, p(y\ne c^{*}|x) = 0$と
+&emsp; 置換すると，(19.16)と等価になる
+
+$\mathcal{L}=-\underset{c}{\mathrm{max}}\,\mathrm{log}p_\theta(y=c|\boldsymbol{x})$  (19.16)
+&emsp;※オンライン自己学習の損失の言及なし. 尤度最大化のこと?
+
 
 ---
+オンライン自己学習におけるhard & soft
+
+- hard: $\mathrm{argmax}p_\theta(y|\boldsymbol{x})$ との間のクロスエントロピーを最小化
+- soft: $p_\theta(y|\boldsymbol{x})$との間のクロスエントロピーを最小化
+
+これらのいいとこ取りをする方法: 温度パラメータの導入 <!-- いいところ: hard→解釈性，高速, soft→複数クラスに所属する場合に対応可能，グループ間の尺度に距離以外を利用可能-->
+- 出力確率を$1/T$乗に上げて再正規化
+- $T \to 0$ではhardと等価
+- $T=1$で  softと等価
+- **ミックスマッチ法**の基礎
+
+---
+
+hard vs soft 損失関数の比較
+
+上から順に，エントロピー，クロスエントロピー
+確率を$1/2$乗して正規化したエントロピー
+
+<figure>
+    <center>
+        <img src="figs/19.3/figure19.9.png" width=550>
+        <figcaption>Figure 19.9</figcaption>
+    </center>
+</figure>
+
+
+---
+
 
 $\boldsymbol{x}$
