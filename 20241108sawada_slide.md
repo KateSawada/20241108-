@@ -96,7 +96,7 @@ html: true
 # 教師なし事前学習
 <figure>
 <center>
-<img src="figs/19.2.4_unsupervised.drawio.png" width=600>
+<img src="figs/19.2/19.2.4_unsupervised.drawio.png" width=600>
 </center>
 </figure>
 同一のラベル付きデータセットを使った事前学習が一般的 (2000年代)
@@ -109,7 +109,7 @@ html: true
 # 自己教師あり事前学習
 <figure>
 <center>
-<img src="figs/19.2.4_self-supervised.drawio.png" width=600>
+<img src="figs/19.2/19.2.4_self-supervised.drawio.png" width=600>
 </center>
 </figure>
 
@@ -121,14 +121,14 @@ html: true
 ---
 <!-- header: 19.2.4.1 Imputation tasks -->
 
-- 入力$x$を$x=(x_h, x_v)$に分割
-- モデルが$x_v$から$x_h$を推測するように学習
+1. 入力$x$を$x=(x_h, x_v)$に分割
+2. モデルが$x_v$から$x_h$を推測するように学習
     - 定式化: $\hat{x}_h = f(x_v, x_h = 0)$
 
 NLP分野では「穴埋めタスク」として知られる
 <figure>
 <center>
-<img src="figs/19.2.4_fig19.4a.png" width=550>
+<img src="figs/19.2/19.2.4_fig19.4a.png" width=550>
     <figcaption>Figure 19.4 (a) 画像タスクでのContext-encoderに対する適用</figcaption>
 </center>
 </figure>
@@ -139,13 +139,13 @@ NLP分野では「穴埋めタスク」として知られる
 
 # Siamese Network <!--読み方: シャムネットワーク-->
 
-- 2つの入力$x_1, x_2$に対して同一のネットワークを使って特徴量を抽出
-- 特徴量感の距離から$x_1, x_2$が同じクラスに属するかどうかを判定
+1. 2つの入力$x_1, x_2$に対して同一のネットワークを使って特徴量を抽出
+2. 特徴量感の距離から$x_1, x_2$が同じクラスに属するかどうかを判定
     - 距離関数にはニューラルネットワークを使うこともある
 
 <figure>
 <center>
-    <img src="figs/19.2.4.2_siamese.drawio.png" width=540>
+    <img src="figs/19.2/19.2.4.2_siamese.drawio.png" width=540>
     <figcaption>Siamese Networkの構造</figcaption>
 </center>
 </figure>
@@ -153,15 +153,15 @@ NLP分野では「穴埋めタスク」として知られる
 ---
 <!-- header: 19.2.4.2 Proxy tasks (pretext tasks) -->
 
-- 入力のペア$(x_1, x_2)$を作成
+1. 入力のペア$(x_1, x_2)$を作成
     - 例: $x_2$は$x_1$に回転処理を加えたもの ($x_2 = t(x_1)$)
-- Siamese Networkに両者を入力して得た出力 $y$ で事前学習
+2. Siamese Networkに両者を入力して得た出力 $y$ で事前学習
     - $p(y|r[f(x_1), f(x_2)])$
     - 例: $y$が回転角度になるように学習
 
 <figure>
 <center>
-    <img src="figs/19.2.4.2_siamese.drawio.png" width=540>
+    <img src="figs/19.2/19.2.4.2_siamese.drawio.png" width=540>
     <figcaption>Siamese Networkの構造（再掲）</figcaption>
 </center>
 </figure>
@@ -173,7 +173,7 @@ NLP分野では「穴埋めタスク」として知られる
 
 <figure>
 <center>
-    <img src="figs/19.2.4.3_contrastive_learning.drawio.png" width=700>
+    <img src="figs/19.2/19.2.4.3_contrastive_learning.drawio.png" width=700>
 </center>
 </figure>
 
@@ -186,12 +186,12 @@ NLP分野では「穴埋めタスク」として知られる
 SimCLR: **Sim**ple **C**ontrastive **L**earning of visual **R**epresentations
 転移学習と半教師あり学習でSoTAを達成
 
-- $x_1=t_1(x), x_2=t_2(x)$ をデータ$x$から作成
+1. $x_1=t_1(x), x_2=t_2(x)$ をデータ$x$から作成
     - これらは意味的に等価な，xの "view"
     - 例: 画像の回転，切り抜きなど
-- $x$と意味的に異なる "negative" サンプル $x_1^-,...,x_n^- \in N(x)$ を
+2. $x$と意味的に異なる "negative" サンプル $x_1^-,...,x_n^- \in N(x)$ を
 データセットからサンプリング
-- $F: \mathbb{R}^D→\mathbb{R}^E$を，$x$に対する類似度を基準に学習
+3. $F: \mathbb{R}^D→\mathbb{R}^E$を，$x$に対する類似度を基準に学習
     - $D$: 入力データの次元，$E$: 埋め込み空間の次元
 
 ---
@@ -207,14 +207,14 @@ $J= F(t_1(x))^TF(t_2(x))−\mathrm{log} \sum_{x_i^- \in N(x)} \mathrm{exp}[F(x_i
  <div style='--fw: 4;'>
     <figure>
     <center>
-        <img src="figs/19.2.4.4_fig19.5a.png" width=400>
+        <img src="figs/19.2/19.2.4.4_fig19.5a.png" width=400>
         <figcaption>Figure 19.5 (a)</figcaption>
     </center>
     </figure>
  </div>
  <div style='--fw: 4;'>
  <figure>
-    <img src="figs/19.2.4.4_fig_description.png">
+    <img src="figs/19.2/19.2.4.4_fig_description.png">
     <!-- htmlタグ内では数式が無効化されるため，苦肉の策で画像にした… -->
  </figure>
  </div>
@@ -243,7 +243,7 @@ random cropによるdata augmentation
 - トリミング後に同じサイズになるようにリサイズ
 <figure>
     <center>
-        <img src="figs/19.2.2.4_fig19.5b_c.png" width=400>
+        <img src="figs/19.2/19.2.2.4_fig19.5b_c.png" width=400>
         <figcaption>Figure19.5 (b), (c)</figcaption>
     </center>
 </figure>
@@ -283,7 +283,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 <figure>
     <center>
-        <img src="figs/19.2.4.5_loss_desc.png" width=500>
+        <img src="figs/19.2/19.2.4.5_loss_desc.png" width=500>
     </center>
 </figure>
 
@@ -292,7 +292,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 <figure>
     <center>
-        <img src="figs/19.2.4.5_fig19.7a.png" width=500>
+        <img src="figs/19.2/19.2.4.5_fig19.7a.png" width=500>
         <figcaption>Figure 19.7 (a)</figcaption>
     </center>
 </figure>
@@ -315,7 +315,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 <figure>
     <center>
-        <img src="figs/19.2.4.5_fig19.7b1.png" width=450>
+        <img src="figs/19.2/19.2.4.5_fig19.7b1.png" width=450>
         <figcaption></figcaption>
     </center>
 </figure>
@@ -325,7 +325,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 <figure>
     <center>
-        <img src="figs/19.2.4.5_fig19.7b2.png" width=600>
+        <img src="figs/19.2/19.2.4.5_fig19.7b2.png" width=600>
         <figcaption></figcaption>
     </center>
 </figure>
@@ -352,7 +352,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 問題設定: 2つのドメインの入力に対して，共通のラベルを出力
 <figure>
     <center>
-        <img src="figs/19.2.5_setting.drawio.png" width="">
+        <img src="figs/19.2/19.2.5_setting.drawio.png" width="">
         <figcaption></figcaption>
     </center>
 </figure>
@@ -390,7 +390,62 @@ $\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$
 <!-- header: 19.3 Semi-supervised learning -->
 
 多くの機械学習の成功例は教師ありの設定
-&emsp; ← 大規模なラベル付きデータセットが必要
+&emsp; ← 大規模なラベル付きデータセットが必要: $x,y\sim p(x,y)$が利用可能
+
+**半教師あり学習**
+- 目標
+    - ラベル無しデータから，データ分布の高次な構造を学習
+    - 僅かなラベル付きデータでタスクごとの詳細を学習
+        - ラベル無しデータセットの一部にラベル付けすることが多い
+- 仮定
+    - $x \sim p(x)$ が利用可能と仮定 <!-- 周辺分布 -->
+    - より多くのデータを入手可能
+        - 実際，ラベル無しデータは容易に入手可能
+
+---
+
+<!-- header: 19.3.1 Self-training and pseudo-labeling -->
+**自己学習**[Scu65; Agr70; McL75] ([元論文](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=798d9840d2439a0e5d47bcf5d164aa46d5e7dc26))
+1. ラベル無しデータに対してモデルを使って予測
+2. 予測結果をラベルとして扱い，その後の学習を行う
+    - このラベルは正しいとは限らない**擬似的な**もの
+
+<figure>
+    <center>
+        <img src="figs/19.3/19.3.1_self_learning.drawio.png" width=650>
+        <figcaption>自己学習のイメージ</figcaption>
+    </center>
+</figure>
+
+---
+- 2つの手法
+    - オフライン
+        1. ラベル無しデータセット全体に疑似ラベルを予測
+        2. ラベル付きデータと，ラベル無しデータ（疑似ラベルアリ）に
+        対して収束するまで学習
+        3. 適切な解が見つかるまで1, 2を反復
+    - オンライン
+        - ラベル無しデータからランダムに選ばれたものに継続的にラベルを予測
+- 比較
+    - オンライン: 古いラベルで学習してしまう
+    - オンライン: 常に再ラベリングするため計算コスト↑
+
+---
+
+**確証バイアス**
+- 誤った疑似ラベルに対して学習すると，無効な解を学習
+- 対策: 「選択メトリック」のヒューリスティック
+    - 正しいラベルのみを保持しようとさせる
+    - 例: 多クラス分類において，一定以上の確率を持つ疑似ラベルのみを保持
+<figure>
+    <center>
+        <img src="figs/19.3/19.3.1_confirmation_bias.drawio.png" width=1100>
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+---
+<!-- header: 19.3.2 Entropy minimization -->
 
 
 ---
