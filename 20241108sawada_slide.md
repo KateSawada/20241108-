@@ -93,7 +93,7 @@ html: true
 ---
 
 <!-- header: 19.2.4 Unsupervised pre-training (self-supervised learning) -->
-# 教師なし事前学習
+**教師なし事前学習**
 <figure>
 <center>
 <img src="figs/19.2/19.2.4_unsupervised.drawio.png" width=600>
@@ -106,7 +106,7 @@ html: true
 
 ---
 
-# 自己教師あり事前学習
+**自己教師あり事前学習**
 <figure>
 <center>
 <img src="figs/19.2/19.2.4_self-supervised.drawio.png" width=600>
@@ -137,7 +137,7 @@ NLP分野では「穴埋めタスク」として知られる
 ---
 <!-- header: 19.2.4.2 Proxy tasks の前に… -->
 
-# Siamese Network <!--読み方: シャムネットワーク-->
+**Siamese Network** <!--読み方: シャムネットワーク-->
 
 1. 2つの入力$x_1, x_2$に対して同一のネットワークを使って特徴量を抽出
 2. 特徴量感の距離から$x_1, x_2$が同じクラスに属するかどうかを判定
@@ -222,7 +222,7 @@ $J= F(t_1(x))^TF(t_2(x))−\mathrm{log} \sum_{x_i^- \in N(x)} \mathrm{exp}[F(x_i
 
 ---
 
-解釈: 条件付きのエネルギーベースモデル（energy based model: EBM）
+**条件付きのエネルギーベースモデル（energy based model: EBM）**
 - $p(x_2|x_1)=\frac{\mathrm{exp}[- \epsilon(x_2|x_1) ]}{Z(x_1)}$ (19.8)
     - $\epsilon(x_2|x_1) = -F(x_2)^TF(x_1)$: エネルギー関数
     - $Z(x)=\int\mathrm{exp}[- \epsilon(x^-|x)]dx^-=\int\mathrm{exp}[F(x^-)^TF(x)]dx^-$
@@ -236,7 +236,7 @@ $J= F(t_1(x))^TF(t_2(x))−\mathrm{log} \sum_{x_i^- \in N(x)} \mathrm{exp}[F(x_i
 
 ---
 
-# SimCLR の鍵
+**SimCLR の鍵**
 random cropによるdata augmentation
 - (b)全体像から局所的な箇所の推定
 - (c)画像の隣り合った部分の推定
@@ -340,7 +340,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
     - 汎化性能と分布の変化への頑健性 → 詳細: [元論文](https://arxiv.org/pdf/2103.00020)
 
 短所
-- ラベルからテキストの変換形式に敏感 → **prompt engineering** が必要
+- ラベルからテキストの変換形式に敏感→**prompt engineering**が必要
     - 例: 食品分類の場合は "a photo of guacamole, a type of food"などの
     形式が必要
     - 曖昧性排除のためのテキスト"a type of food" などを人手で付与
@@ -375,7 +375,7 @@ $L_{ij}=\frac{f_I(x_i)}{\mathrm{Norm}(f_I(x_i))}\frac{f_T(y_i)}{\mathrm{Norm}(f_
 
 ---
 
-目的関数
+**目的関数**
 $\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$
 &emsp; $\frac{1}{N_s+N_t} \sum_{n \in \mathcal{D}_s, \mathcal{D}_t}\ell(d_n, f_\theta(\boldsymbol{x}_n))+\frac{1}{N} \sum_{m \in \mathcal{D}_s}\ell(y_m, g_\phi(f_\theta(\boldsymbol{x}_m)))$
 
@@ -390,7 +390,7 @@ $\underset{\phi}{\mathrm{min}}\,\underset{\theta}{\mathrm{max}}$
 <!-- header: 19.3 Semi-supervised learning -->
 
 多くの機械学習の成功例は教師ありの設定
-&emsp; ← 大規模なラベル付きデータセットが必要: $x,y\sim p(x,y)$が利用可能
+&emsp; ←大規模なラベル付きデータセットが必要: $x,y\sim p(x,y)$が利用可能
 
 **半教師あり学習**
 - 目標
@@ -460,7 +460,7 @@ $\mathcal{L}=-\underset{c}{\mathrm{max}}\,\mathrm{log}p_\theta(y=c|\boldsymbol{x
 
 
 ---
-オンライン自己学習におけるhard & soft
+**オンライン自己学習におけるhard & soft**
 
 - hard: $\mathrm{argmax}p_\theta(y|\boldsymbol{x})$ との間のクロスエントロピーを最小化
 - soft: $p_\theta(y|\boldsymbol{x})$との間のクロスエントロピーを最小化
@@ -473,7 +473,7 @@ $\mathcal{L}=-\underset{c}{\mathrm{max}}\,\mathrm{log}p_\theta(y=c|\boldsymbol{x
 
 ---
 
-hard vs soft 損失関数の比較
+**hard vs soft 損失関数の比較**
 
 上から順に，エントロピー，クロスエントロピー
 確率を$1/2$乗して正規化したエントロピー
@@ -506,7 +506,7 @@ hard vs soft 損失関数の比較
 
 ---
 
-エントロピー最小化がクラスタ仮定に基づく背景
+**エントロピー最小化がクラスタ仮定に基づく背景**
 
 (a): 決定境界が高密度領域を通過 & 高エントロピー
 &emsp; ←単純なモデル or 正則化されたモデル
@@ -579,4 +579,168 @@ Co-trainingの問題
 - 以下，通常のCo-trainingと同様に繰り返し
 
 ---
+<!-- header: 19.3.4 Label propagation on graphs -->
+**Label propagation** （ラベル伝搬）
 
+- ラベル割り当てのための半教師あり学習手法
+- 2つのデータが類似した時, 同じラベルを持つと仮定（**多様体仮定**）
+- ノードがデータとラベル，エッジがノード間類似度のグラフを利用
+    - ノード間類似度 $w_{i,j}>0$，ラベルは既知と未知両方含む
+
+<figure>
+    <center>
+        <img src="figs/19.3/19.3.4_label_propagation.drawio.png" width=>
+        <figcaption></figcaption>
+    </center>
+</figure>
+
+---
+
+
+1. グラフを構築（$M$個のラベル付きデータと$N$個のラベルなしデータ）
+2. $w$をもとに遷移行列$\mathbf{T}$を構築 （$(M+N) \times (M+N)$）
+    - $\mathbf{T}_{i, j}$: ノード$i$のラベルがノード$j$に伝播する確率
+3. クラス数$C$に対して行列$\mathbf{Y}$を作成（$(M+N)\times C$）
+    - $i$行目が，そのデータのラベルの確率
+4. 以下を$\mathbf{Y}$の更新が収束するまで反復
+    1. $\mathbf{Y} ←\mathbf{T}\mathbf{Y}$ に更新
+    2. $\mathbf{Y}_{i,c}←\mathbf{Y}_{i,c}/\sum_k \mathbf{Y}_{i,k}$ で正規化
+    3. ラベル付きデータに対する$\mathbf{Y}$を$[0, 1]$に置換
+
+---
+
+**特徴**
+- **transductive learning**の一種
+    - 汎化モデルの学習ではあく，ラベル無しのデータセットへのラベル付け
+- 単純な距離尺度に基づくラベリングの問題を克服
+    - 単純な例: データ間の距離にユークリッド距離を使用
+    - 高次のデータでは，距離がデータ間の関連を反映しない可能性アリ
+    - 類似度の重みは問題ごとの固有の特性に従って任意に設定可能[Zhu05]
+    - 深層学習への応用事例アリ [BRR18; Isc+19]
+
+---
+
+<!-- header: 19.3.5 Consistency regularization -->
+
+<!-- 一貫性 正則化 -->
+
+- データまたはモデルに摂動を加えても出力の変化は僅か: 「一貫性」
+- モデル出力の疑似ラベルを利用 → ラベル無しデータに適用可能
+- 半教師あり学習の損失関数設計に利用
+- CV分野での例
+    - 入力画像を回転させる，ノイズを加えるなど
+    - ネットワークにドロップアウトを加える，重みにノイズを加えるなど
+
+---
+
+1. $\boldsymbol{x}' \sim q(\boldsymbol{x}'|\boldsymbol{x})$ をサンプル
+    - $q(\boldsymbol{x}'|\boldsymbol{x})$は入力に確率的な変形を与える分布
+2. 損失関数の最小化
+    - 教師あり学習: $||p_\theta(y|\boldsymbol{x})-p_\theta(y|\boldsymbol{x}')||^2$
+        - $p_\theta(y|\boldsymbol{x})$は固定することが一般的
+    - 半教師あり学習（ラベルありデータ$M$個，ラベル無しデータ$N$個）:
+    $-\sum_{i=1}^M \mathrm{log}p_\theta(y=y_i|\boldsymbol{x}_i)+\lambda \sum_{j=1}^N ||p_\theta(y|\boldsymbol{x}_j)-p_\theta(y|\boldsymbol{x}_j')||^2$
+        - $\lambda$: ラベルあり/無しの重要度を調整するハイパラ
+---
+
+前ページの損失関数↓の重要ポイント
+
+$-\sum_{i=1}^M \mathrm{log}p_\theta(y=y_i|\boldsymbol{x}_i)+\lambda \sum_{j=1}^N ||p_\theta(y|\boldsymbol{x}_j)-p_\theta(y|\boldsymbol{x}_j')||^2$
+
+- $\lambda$の選択
+    - 大きすぎると確証バイアスに似た現象が発生
+    - $\lambda=0$から始め，徐々に大きくすることが一般的
+- $q(\boldsymbol{x}′|\boldsymbol{x})$の選択
+    - $\boldsymbol{x}$のラベルを変えない分布であるべき
+    - 「入力を大きく破壊するがラベルが不変の変形」が効果的 
+    [Xie+19; Ber+19a; Soh+20]
+
+---
+**「入力を大きく破壊するがラベルが不変の変形」** をざっくり紹介
+
+- AutoAugument
+    - 探索モデルによって最適な変形のパラメータを探索
+- Cutout
+    - 画像中にランダムに矩形のマスクを配置
+- FixMatch
+    - 複数の変換のパラメータと重みを用意
+    - 変換によるモデルの予測ラベルの変化を計算
+    - それに応じて重みを更新
+
+などなど…
+
+---
+
+**virtual adversarial training**
+
+- data augmentationには，その手法が適切か判断する専門知識が必要
+- → 解析的に変換を発見し，モデル出力を変化させる接道を発見
+1. 摂動 $\delta$を多変量正規分布からサンプルした$\boldsymbol{d}で$初期化
+2. $\boldsymbol{\delta}← \nabla_{\boldsymbol{\delta}}D_{\mathrm{KL}}(p_\theta(y|\boldsymbol{x}) || p_\theta (y|\boldsymbol{x}+\boldsymbol{\delta}))|_{\boldsymbol{\delta}=\xi \boldsymbol{d}}$
+    - $\xi$は $10^{-6}程度の小さな定数
+    - $\boldsymbol{\delta}=\mathrm{argmax}_{\boldsymbol{\delta}}D_{\mathrm{KL}}(p_\theta(y|\boldsymbol{x}) || p_\theta (y|\boldsymbol{x}+\boldsymbol{\delta}))$ を目指す
+- 摂動の強度を表すハイパラ $\epsilon$を使って $\boldsymbol{x}'=\boldsymbol{x}+\epsilon\frac{\delta}{||\delta||_2}$で変換→正則化
+
+---
+
+**一貫性正則化の注意点(1/2)**
+
+目的関数の幾何学的な特性・SGDの軌跡に影響
+- 異なるepochでのパラメータ間のL2距離$>>$目的関数となる
+- **stochastic weight averaging** [Izm+18] の導入
+    - 影響の回避&半教師あり学習でSoTA達成
+    - 学習中のパラメータを一定期間過去のものまで平均 → 損失関数が滑らかに
+
+---
+
+**一貫性正則化の注意点(2/2)**
+
+摂動の有無によるモデル出力の差の指標
+- L2距離の2乗
+    - モデル出力にsoftmax関数を施す時，摂動の有無による乖離が大きく
+なると損失の勾配が0に近づく
+    - 予測値が非常に不安定なときにモデルが更新されないという利点
+- KLD
+    - スケールがラベル付きデータに使われるクロスエントロピー損失と同じ
+    - 直感的にハイパラ$\lambda$のチューニング可能
+
+
+---
+
+**L2距離（青）の2乗とKLD（橙）の比較**
+
+<figure>
+    <center>
+        <img src="figs/19.3/figure19.11.png" width=500>
+        <figcaption>Figure 19.11</figcaption>
+    </center>
+</figure>
+
+- L2は両端で傾きが0に近づく → 大きな誤りでモデル更新が起きない
+
+---
+
+<!-- header: 19.3.7 Combining self-supervised and semi-supervised learning -->
+
+自己教師あり学習と半教師あり学習の組み合わせの事例[Che+20c]
+- SimCLR (19.2.4.4) を利用
+- ラベル無しデータに自己教師ありで表現学習($T$)
+- 少量のラベル付きデータを使って転移学習によるfine-tuning
+- 元のもとのラベル無しデータで生徒モデル($S$)に知識蒸留
+    - softmaxの出力について温度パラメータ $\tau \gt 0$を導入 (**ラベル平滑化**)
+$$
+\mathcal{L}(T) = -sum_{\boldsymbol{X}_i \in \mathcal{D}}[\sum_y p^T(y|\boldsymbol{x}_i ;\tau \mathrm{log}p^S(y|\boldsymbol{x}_i ;\tau)]
+$$
+
+---
+
+- 通常は$S$は$T$より小規模なモデルを瑠葉
+    - 複雑なモデル$T$の表現能力を，軽量な$S$に引き継ぎたい
+- $S$と$T$が同じ構造の場合 → **自己学習** (19.3.1)
+
+<figure>
+    <center>
+        <img src="figs/19.3/figure19.13.png" width=600>
+        <figcaption>Figure 19.13</figcaption>
+    </center>
+</figure>
