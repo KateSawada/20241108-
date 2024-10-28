@@ -658,7 +658,7 @@ $-\sum_{i=1}^M \mathrm{log}p_\theta(y=y_i|\boldsymbol{x}_i)+\lambda \sum_{j=1}^N
 ---
 **「入力を大きく破壊するがラベルが不変の変形」** をざっくり紹介
 
-- AutoAugument
+- AutoAugment (10/25 19.1.1にて)
     - 探索モデルによって最適な変形のパラメータを探索
 - Cutout
     - 画像中にランダムに矩形のマスクを配置
